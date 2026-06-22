@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع الماركات | axperts - صيانة الأجهزة المنزلية</title>
+    <meta name="description" content="صيانة جميع ماركات الأجهزة المنزلية. فنيين معتمدين. اتصل بنا الآن 01280004106">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', 'Tajawal', sans-serif; background: #f0f2f8; color: #333; line-height: 1.8; }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .header-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .logo-text { font-size: 24px; font-weight: 800; }
+        .logo-sub { font-size: 12px; color: #a0aec0; margin-top: -5px; }
+        .nav { display: flex; gap: 30px; align-items: center; }
+        .nav a { color: white; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; padding: 8px 16px; border-radius: 8px; }
+        .nav a:hover { background: rgba(255,255,255,0.1); }
+        .nav a.active { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .header-contact { display: flex; align-items: center; gap: 15px; }
+        .phone-btn { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .book-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; }
+
+        .hero {
+            min-height: 45vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex; align-items: center; justify-content: center; padding-top: 100px; text-align: center; color: white;
+        }
+        .hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 15px; }
+        .hero p { font-size: 20px; opacity: 0.9; }
+
+        .section { padding: 60px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 36px; font-weight: 900; text-align: center; margin-bottom: 15px; color: #1a1a2e; }
+        .section-subtitle { text-align: center; font-size: 17px; color: #666; margin-bottom: 50px; }
+
+        /* Brand cards with images */
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .brand-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid transparent;
+        }
+        .brand-card:hover {
+            transform: translateY(-6px);
+            border-color: #667eea;
+            box-shadow: 0 20px 40px rgba(102,126,234,0.25);
+        }
+
+        /* Image area */
+                .brand-img-wrap {
+            height: 160px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: white;
+        }
+        .brand-box {
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .brand-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            font-weight: 900;
+            color: white;
+            font-family: 'Cairo', Arial, sans-serif;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+        }
+
+        .brand-info {
+            padding: 18px 20px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .brand-info h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; color: #1a1a2e; }
+        .brand-info p { font-size: 13px; color: #777; line-height: 1.6; flex: 1; }
+        .brand-btn {
+            display: inline-block;
+            margin-top: 14px;
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .footer { background: #0a0a1a; color: white; padding: 60px 20px 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto 40px; }
+        .footer-col h4 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #ffd700; }
+        .footer-col p { color: #a0aec0; line-height: 1.8; }
+        .footer-col a { color: #a0aec0; text-decoration: none; display: block; margin-bottom: 10px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #a0aec0; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .nav { display: none; }
+            .brands-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .brand-img-wrap { height: 120px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                <div><div class="logo-text">axperts</div><div class="logo-sub">صيانة الأجهزة المنزلية</div></div>
+            </a>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="brands.html" class="active">الماركات</a>
+                <a href="index.html#services">خدماتنا</a>
+                <a href="index.html#about">من نحن</a>
+                <a href="index.html#contact">تواصل معنا</a>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:01280004106" class="phone-btn">📞 01280004106</a>
+                <a href="#book" class="book-btn">احجز الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>جميع الماركات</h1>
+            <p>نقدم خدمة صيانة متكاملة لجميع الماركات العالمية والمحلية</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">اختر ماركتك</h2>
+        <p class="section-subtitle">فنيين معتمدين لكل ماركة — قطع غيار أصلية — ضمان سنة على الإصلاح</p>
+
+        <div class="brands-grid">
+
+            <!-- Brands with real product images -->
+            <a href="lg.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #9c27b0;">
+                    <div class="brand-circle" style="background:#9c27b0;">LG</div>
+                </div>
+                <div class="brand-info">
+                    <h3>إل جي</h3>
+                    <p>صيانة تكييفات وغسالات وثلاجات وشاشات LG</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="samsung.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">Sa</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سامسونج</h3>
+                    <p>صيانة جميع أجهزة سامسونج المنزلية والإلكترونية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="bosch.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #b71c1c;">
+                    <div class="brand-circle" style="background:#b71c1c;">Bo</div>
+                </div>
+                <div class="brand-info">
+                    <h3>بوش</h3>
+                    <p>صيانة غسالات وجلايات وثلاجات وأفران بوش</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="siemens.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #00897b;">
+                    <div class="brand-circle" style="background:#00897b;">Si</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سيمنس</h3>
+                    <p>صيانة أجهزة سيمنس الألمانية عالية الجودة</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="whirlpool.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1976d2;">
+                    <div class="brand-circle" style="background:#1976d2;">Wh</div>
+                </div>
+                <div class="brand-info">
+                    <h3>وايرلبول</h3>
+                    <p>صيانة ثلاجات وغسالات وجلايات وايرلبول</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="panasonic.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">Pa</div>
+                </div>
+                <div class="brand-info">
+                    <h3>باناسونيك</h3>
+                    <p>صيانة تكييفات وشاشات وأجهزة باناسونيك</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="toshiba.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">To</div>
+                </div>
+                <div class="brand-info">
+                    <h3>توشيبا</h3>
+                    <p>صيانة تلفزيونات وتكييفات وأجهزة توشيبا</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="sharp.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0288d1;">
+                    <div class="brand-circle" style="background:#0288d1;">Sh</div>
+                </div>
+                <div class="brand-info">
+                    <h3>شارب</h3>
+                    <p>صيانة ثلاجات وتكييفات وشاشات شارب</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="zanussi.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #00838f;">
+                    <div class="brand-circle" style="background:#00838f;">Za</div>
+                </div>
+                <div class="brand-info">
+                    <h3>زانوسي</h3>
+                    <p>صيانة غسالات وثلاجات وأفران زانوسي</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="ariston.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Ar</div>
+                </div>
+                <div class="brand-info">
+                    <h3>اريستون</h3>
+                    <p>صيانة سخانات وغسالات وأفران اريستون</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="unionaire.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #00695c;">
+                    <div class="brand-circle" style="background:#00695c;">Un</div>
+                </div>
+                <div class="brand-info">
+                    <h3>يونيون اير</h3>
+                    <p>صيانة تكييفات وثلاجات وغسالات يونيون اير</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="fresh.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #558b2f;">
+                    <div class="brand-circle" style="background:#558b2f;">Fr</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فريش</h3>
+                    <p>صيانة ثلاجات وغسالات وبوتاجازات فريش</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <!-- Brands without specific photos - using gradient fallback -->
+            <a href="sony.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #212121;">
+                    <div class="brand-circle" style="background:#212121;">So</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سوني</h3>
+                    <p>صيانة شاشات وتلفزيونات وأجهزة سوني</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="beko.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">Be</div>
+                </div>
+                <div class="brand-info">
+                    <h3>بيكو</h3>
+                    <p>صيانة غسالات وثلاجات وأفران بيكو</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="carrier.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">Ca</div>
+                </div>
+                <div class="brand-info">
+                    <h3>كارير</h3>
+                    <p>صيانة تكييفات كارير المركزية والسبليت</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="hitachi.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Hi</div>
+                </div>
+                <div class="brand-info">
+                    <h3>هيتاشي</h3>
+                    <p>صيانة تكييفات وثلاجات هيتاشي</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="haier.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">Ha</div>
+                </div>
+                <div class="brand-info">
+                    <h3>هاير</h3>
+                    <p>صيانة ثلاجات وغسالات وتكييفات هاير</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="hisense.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Hs</div>
+                </div>
+                <div class="brand-info">
+                    <h3>هايسنس</h3>
+                    <p>صيانة شاشات وتكييفات وثلاجات هايسنس</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="kiriazi.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Ki</div>
+                </div>
+                <div class="brand-info">
+                    <h3>كريازي</h3>
+                    <p>صيانة ثلاجات وغسالات كريازي المصرية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="universal.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #2e7d32;">
+                    <div class="brand-circle" style="background:#2e7d32;">Uv</div>
+                </div>
+                <div class="brand-info">
+                    <h3>يونيفرسال</h3>
+                    <p>صيانة أجهزة يونيفرسال المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="indesit.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">In</div>
+                </div>
+                <div class="brand-info">
+                    <h3>اندست</h3>
+                    <p>صيانة غسالات وثلاجات اندست</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="hoover.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #ad1457;">
+                    <div class="brand-circle" style="background:#ad1457;">Ho</div>
+                </div>
+                <div class="brand-info">
+                    <h3>هوفر</h3>
+                    <p>صيانة غسالات ومكانس هوفر</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="philips.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">Ph</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فيليبس</h3>
+                    <p>صيانة أجهزة فيليبس الإلكترونية والمنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="daewoo.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Da</div>
+                </div>
+                <div class="brand-info">
+                    <h3>دايو</h3>
+                    <p>صيانة ثلاجات وغسالات دايو</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="frigidaire.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">Fi</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فريجيدير</h3>
+                    <p>صيانة ثلاجات وغسالات فريجيدير</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="kelvinator.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #00695c;">
+                    <div class="brand-circle" style="background:#00695c;">Ke</div>
+                </div>
+                <div class="brand-info">
+                    <h3>كلفينيتور</h3>
+                    <p>صيانة أجهزة كلفينيتور المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="general_electric.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">GE</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جنرال الكتريك</h3>
+                    <p>صيانة أجهزة جنرال الكتريك المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="vaillant.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #2e7d32;">
+                    <div class="brand-circle" style="background:#2e7d32;">Va</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فايلنت</h3>
+                    <p>صيانة سخانات ومراجل فايلنت</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="stiebel_eltron.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">St</div>
+                </div>
+                <div class="brand-info">
+                    <h3>شتيبيل</h3>
+                    <p>صيانة سخانات شتيبيل الألمانية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="clage.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Cl</div>
+                </div>
+                <div class="brand-info">
+                    <h3>كلاج</h3>
+                    <p>صيانة سخانات كلاج الفورية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="thomson.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #6a1b9a;">
+                    <div class="brand-circle" style="background:#6a1b9a;">Th</div>
+                </div>
+                <div class="brand-info">
+                    <h3>طومسون</h3>
+                    <p>صيانة شاشات وأجهزة طومسون</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="ideal.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #00695c;">
+                    <div class="brand-circle" style="background:#00695c;">Id</div>
+                </div>
+                <div class="brand-info">
+                    <h3>إيديال</h3>
+                    <p>صيانة أجهزة إيديال المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="white_whale.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">WW</div>
+                </div>
+                <div class="brand-info">
+                    <h3>وايت ويل</h3>
+                    <p>صيانة ثلاجات وغسالات وايت ويل</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="white_point.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">WP</div>
+                </div>
+                <div class="brand-info">
+                    <h3>وايت بوينت</h3>
+                    <p>صيانة أجهزة وايت بوينت المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="technogas.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #37474f;">
+                    <div class="brand-circle" style="background:#37474f;">TG</div>
+                </div>
+                <div class="brand-info">
+                    <h3>تكنوجاز</h3>
+                    <p>صيانة بوتاجازات وأفران تكنوجاز</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="glem_gas.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Gl</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جليم جاز</h3>
+                    <p>صيانة بوتاجازات وأفران جليم جاز</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="maytag.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">My</div>
+                </div>
+                <div class="brand-info">
+                    <h3>ميتاج</h3>
+                    <p>صيانة غسالات وثلاجات ميتاج</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="alaska.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">Al</div>
+                </div>
+                <div class="brand-info">
+                    <h3>الاسكا</h3>
+                    <p>صيانة أجهزة الاسكا المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="norge.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">No</div>
+                </div>
+                <div class="brand-info">
+                    <h3>نورج</h3>
+                    <p>صيانة أجهزة نورج المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="junker.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #37474f;">
+                    <div class="brand-circle" style="background:#37474f;">Ju</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جونكر</h3>
+                    <p>صيانة سخانات وأجهزة جونكر</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="electrostar.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">El</div>
+                </div>
+                <div class="brand-info">
+                    <h3>الكتروستار</h3>
+                    <p>صيانة أجهزة الكتروستار المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="jack.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Ja</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جاك</h3>
+                    <p>صيانة تكييفات وأجهزة جاك</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="gmc.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">GM</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جي ام سي</h3>
+                    <p>صيانة تكييفات جي ام سي</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="veto_flo.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #2e7d32;">
+                    <div class="brand-circle" style="background:#2e7d32;">VF</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فيتو فلو</h3>
+                    <p>صيانة سخانات فيتو فلو</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="americool.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #0277bd;">
+                    <div class="brand-circle" style="background:#0277bd;">Am</div>
+                </div>
+                <div class="brand-info">
+                    <h3>أمريكول</h3>
+                    <p>صيانة تكييفات أمريكول</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="westinghouse.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #6a1b9a;">
+                    <div class="brand-circle" style="background:#6a1b9a;">We</div>
+                </div>
+                <div class="brand-info">
+                    <h3>وستنجهاوس</h3>
+                    <p>صيانة أجهزة وستنجهاوس المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="alba.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #37474f;">
+                    <div class="brand-circle" style="background:#37474f;">Ab</div>
+                </div>
+                <div class="brand-info">
+                    <h3>البا</h3>
+                    <p>صيانة شاشات وأجهزة البا</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="fagor.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Fa</div>
+                </div>
+                <div class="brand-info">
+                    <h3>فاجور</h3>
+                    <p>صيانة أجهزة فاجور المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="iberna.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Ib</div>
+                </div>
+                <div class="brand-info">
+                    <h3>إيبيرنا</h3>
+                    <p>صيانة أجهزة إيبيرنا المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="sanyo.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Sn</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سانيو</h3>
+                    <p>صيانة أجهزة سانيو المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="magic_chef.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #ad1457;">
+                    <div class="brand-circle" style="background:#ad1457;">MC</div>
+                </div>
+                <div class="brand-info">
+                    <h3>ماجيك شيف</h3>
+                    <p>صيانة أجهزة ماجيك شيف</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="gibson.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #4e342e;">
+                    <div class="brand-circle" style="background:#4e342e;">Gi</div>
+                </div>
+                <div class="brand-info">
+                    <h3>جيبسون</h3>
+                    <p>صيانة أجهزة جيبسون المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="bior.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #1565c0;">
+                    <div class="brand-circle" style="background:#1565c0;">Bi</div>
+                </div>
+                <div class="brand-info">
+                    <h3>بيور</h3>
+                    <p>صيانة أجهزة بيور المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="smeg.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #c62828;">
+                    <div class="brand-circle" style="background:#c62828;">Sm</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سميج</h3>
+                    <p>صيانة أجهزة سميج الإيطالية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+            <a href="siltal.html" class="brand-card">
+                <div class="brand-img-wrap brand-box" style="border-top: 4px solid #283593;">
+                    <div class="brand-circle" style="background:#283593;">Sl</div>
+                </div>
+                <div class="brand-info">
+                    <h3>سيلتال</h3>
+                    <p>صيانة أجهزة سيلتال المنزلية</p>
+                    <div class="brand-btn">استعرض الخدمات ←</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>عن axperts</h4>
+                <p>شركة رائدة في مجال صيانة الأجهزة المنزلية في مصر منذ عام 2009.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <a href="index.html">الرئيسية</a>
+                <a href="brands.html">الماركات</a>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <a href="tel:01280004106">📞 01280004106</a>
+                <a href="https://wa.me/201280004106">💬 واتساب</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 axperts - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+</body>
+</html>

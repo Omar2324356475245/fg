@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axperts - صيانة الأجهزة المنزلية</title>
+    <meta name="description" content="خدمة صيانة الأجهزة المنزلية بعد انتهاء الضمان. فنيين معتمدين. اتصل بنا 01280004106">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', 'Tajawal', sans-serif; background: #f8f9fa; color: #333; line-height: 1.8; }
+
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .header-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .logo-text { font-size: 24px; font-weight: 800; }
+        .logo-sub { font-size: 12px; color: #a0aec0; margin-top: -5px; }
+        .nav { display: flex; gap: 30px; align-items: center; }
+        .nav a { color: white; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; padding: 8px 16px; border-radius: 8px; }
+        .nav a:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .nav a.active { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .header-contact { display: flex; align-items: center; gap: 15px; }
+        .phone-btn { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+        .book-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex; align-items: center; justify-content: center; padding-top: 100px; text-align: center; color: white;
+        }
+        .hero h1 { font-size: 64px; font-weight: 900; margin-bottom: 20px; }
+        .hero h1 span { color: #ffd700; display: block; }
+        .hero p { font-size: 20px; margin-bottom: 40px; opacity: 0.9; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .hero-btn { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; }
+        .hero-btn-primary { background: white; color: #333; }
+        .hero-btn-whatsapp { background: #25d366; color: white; }
+        .hero-btn-call { background: rgba(255,255,255,0.2); color: white; border: 2px solid rgba(255,255,255,0.5); }
+
+        .stats { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .stat-item { background: rgba(255,255,255,0.15); padding: 25px 40px; border-radius: 20px; text-align: center; }
+        .stat-number { font-size: 32px; font-weight: 900; color: #ffd700; }
+        .stat-label { font-size: 14px; opacity: 0.9; }
+
+        /* BRANDS SECTION */
+        .section { padding: 80px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 42px; font-weight: 900; text-align: center; margin-bottom: 20px; color: #1a1a2e; }
+        .section-subtitle { text-align: center; font-size: 18px; color: #666; margin-bottom: 60px; }
+
+        .brands-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+        .brand-mini-card {
+            background: white; border-radius: 15px; padding: 20px 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s; text-decoration: none; color: #333;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            border: 2px solid transparent;
+        }
+        .brand-mini-card:hover { transform: translateY(-5px); border-color: #667eea; box-shadow: 0 15px 30px rgba(102,126,234,0.2); }
+        .brand-mini-card h3 { font-size: 15px; font-weight: 700; }
+        .brand-mini-circle { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900; color: white; margin-bottom: 12px; font-family: 'Cairo', Arial, sans-serif; }
+
+        .view-all-btn { display: block; text-align: center; margin-top: 40px; }
+        .view-all-btn a { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 15px 40px; border-radius: 30px; text-decoration: none; font-weight: 700; font-size: 17px; }
+
+        /* ABOUT SECTION */
+        .about-section { background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%); color: white; padding: 80px 20px; }
+        .about-inner { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-text h2 { font-size: 40px; font-weight: 900; margin-bottom: 20px; }
+        .about-text h2 span { color: #ffd700; }
+        .about-text p { font-size: 17px; color: #ccc; line-height: 2; margin-bottom: 20px; }
+        .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+        .about-feature { background: rgba(255,255,255,0.08); border-radius: 12px; padding: 20px; }
+        .about-feature .icon { width: 54px; height: 54px; background: linear-gradient(135deg, #4f8ef7, #5b6ef5); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+        .about-feature .icon svg { width: 28px; height: 28px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .about-feature h4 { font-size: 16px; font-weight: 700; margin-bottom: 5px; }
+        .about-feature p { font-size: 13px; color: #aaa; line-height: 1.6; margin: 0; }
+        .about-img { border-radius: 20px; overflow: hidden; }
+        .about-img img { width: 100%; height: 450px; object-fit: cover; border-radius: 20px; }
+        .about-img-placeholder { width: 100%; height: 450px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+        /* TESTIMONIALS */
+        .testimonials-section { padding: 80px 20px; background: #f8f9fa; }
+        .testimonials-inner { max-width: 1400px; margin: 0 auto; }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+        .testimonial-card { background: white; border-radius: 20px; padding: 30px; box-shadow: 0 5px 25px rgba(0,0,0,0.08); position: relative; }
+        .testimonial-card::before { content: '"'; font-size: 80px; color: #667eea; opacity: 0.15; position: absolute; top: 10px; right: 20px; font-family: serif; line-height: 1; }
+        .stars { color: #ffc107; font-size: 20px; margin-bottom: 15px; }
+        .testimonial-text { font-size: 15px; color: #555; line-height: 1.8; margin-bottom: 20px; }
+        .testimonial-author { display: flex; align-items: center; gap: 12px; }
+        .author-avatar { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px; }
+        .author-name { font-weight: 700; font-size: 15px; }
+        .author-location { font-size: 13px; color: #999; }
+
+        /* SERVICES HIGHLIGHT */
+        .services-section { padding: 80px 20px; background: white; }
+        .services-inner { max-width: 1400px; margin: 0 auto; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 25px; }
+        .service-card { background: #f8f9fa; border-radius: 15px; overflow: hidden; text-align: center; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.07); }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 15px 35px rgba(102,126,234,0.25); }
+        .service-img { width: 100%; height: 160px; object-fit: cover; display: block; transition: transform 0.4s; }
+        .service-card:hover .service-img { transform: scale(1.07); }
+        .service-img-wrap { overflow: hidden; height: 160px; }
+        .service-body { padding: 20px 18px 22px; }
+        .service-card h3 { font-size: 17px; font-weight: 800; margin-bottom: 8px; color: #1a1a2e; }
+        .service-card p { font-size: 13px; color: #666; line-height: 1.7; }
+
+        /* FOOTER */
+        .footer { background: #0a0a1a; color: white; padding: 60px 20px 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto 40px; }
+        .footer-col h4 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #ffd700; }
+        .footer-col p { color: #a0aec0; line-height: 1.8; }
+        .footer-col a { color: #a0aec0; text-decoration: none; display: block; margin-bottom: 10px; }
+        .footer-col a:hover { color: #667eea; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #a0aec0; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .nav { display: none; }
+            .about-inner { grid-template-columns: 1fr; }
+            .about-img { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                <div><div class="logo-text">axperts</div><div class="logo-sub">صيانة الأجهزة المنزلية</div></div>
+            </a>
+            <nav class="nav">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="brands.html">الماركات</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#about">من نحن</a>
+                <a href="#contact">تواصل معنا</a>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:01280004106" class="phone-btn">📞 01280004106</a>
+                <a href="#book" class="book-btn">احجز الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <h1>خبراء صيانة <span>الأجهزة المنزلية</span></h1>
+            <p>نصلح جميع الأجهزة المنزلية بعد انتهاء الضمان — فنيين محترفون معتمدون — ضمان على جميع الإصلاحات</p>
+            <div class="hero-buttons">
+                <a href="brands.html" class="hero-btn hero-btn-primary">← استعرض الماركات</a>
+                <a href="https://wa.me/201280004106" class="hero-btn hero-btn-whatsapp">💬 واتساب</a>
+                <a href="tel:01280004106" class="hero-btn hero-btn-call">📞 اتصل بنا الآن</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-number">+15</div><div class="stat-label">سنة خبرة</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">خدمة طوارئ</div></div>
+                <div class="stat-item"><div class="stat-number">+10,000</div><div class="stat-label">عميل راضٍ</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS PREVIEW -->
+    <section class="section">
+        <h2 class="section-title">الماركات التي نخدمها</h2>
+        <p class="section-subtitle">نقدم خدمة صيانة متكاملة لجميع الماركات العالمية والمحلية</p>
+        <div class="brands-preview-grid">
+            <a href="lg.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#9c27b0;">LG</div>
+                <h3>إل جي</h3>
+            </a>
+            <a href="samsung.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#1565c0;">Sa</div>
+                <h3>سامسونج</h3>
+            </a>
+            <a href="bosch.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#b71c1c;">Bo</div>
+                <h3>بوش</h3>
+            </a>
+            <a href="siemens.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#00897b;">Si</div>
+                <h3>سيمنس</h3>
+            </a>
+            <a href="sharp.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#0288d1;">Sh</div>
+                <h3>شارب</h3>
+            </a>
+            <a href="panasonic.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#1565c0;">Pa</div>
+                <h3>باناسونيك</h3>
+            </a>
+            <a href="toshiba.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#c62828;">To</div>
+                <h3>توشيبا</h3>
+            </a>
+            <a href="whirlpool.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#1976d2;">Wh</div>
+                <h3>وايرلبول</h3>
+            </a>
+            <a href="zanussi.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#00838f;">Za</div>
+                <h3>زانوسي</h3>
+            </a>
+            <a href="ariston.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#283593;">Ar</div>
+                <h3>اريستون</h3>
+            </a>
+            <a href="unionaire.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#00695c;">Un</div>
+                <h3>يونيون اير</h3>
+            </a>
+            <a href="fresh.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#558b2f;">Fr</div>
+                <h3>فريش</h3>
+            </a>
+            <a href="sony.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#212121;">So</div>
+                <h3>سوني</h3>
+            </a>
+            <a href="beko.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#1565c0;">Be</div>
+                <h3>بيكو</h3>
+            </a>
+            <a href="carrier.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#0277bd;">Ca</div>
+                <h3>كارير</h3>
+            </a>
+            <a href="hitachi.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#c62828;">Hi</div>
+                <h3>هيتاشي</h3>
+            </a>
+            <a href="haier.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#1565c0;">Ha</div>
+                <h3>هاير</h3>
+            </a>
+            <a href="hisense.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#c62828;">Hs</div>
+                <h3>هايسنس</h3>
+            </a>
+            <a href="kiriazi.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#283593;">Ki</div>
+                <h3>كريازي</h3>
+            </a>
+            <a href="universal.html" class="brand-mini-card">
+                <div class="brand-mini-circle" style="background:#2e7d32;">Uv</div>
+                <h3>يونيفرسال</h3>
+            </a>
+        </div>
+        <div class="view-all-btn">
+            <a href="brands.html">عرض جميع الماركات ←</a>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services-section" id="services">
+        <div class="services-inner">
+            <h2 class="section-title">خدماتنا</h2>
+            <p class="section-subtitle">نقدم خدمات صيانة شاملة لجميع أنواع الأجهزة المنزلية</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/10_Panasonic_Air_Cond_CS_RE12RKEW_Wall.png" alt="تكييفات"></div>
+                    <div class="service-body"><h3>تكييفات</h3><p>صيانة وإصلاح جميع أنواع التكييفات السبليت والمركزية</p></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/3_Fresh_FNT_D470YB_4K_Digital_Refrigerator.png" alt="ثلاجات"></div>
+                    <div class="service-body"><h3>ثلاجات</h3><p>إصلاح الثلاجات والفريزر وتغيير الكمبروسورات والغاز</p></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/4_Washing_machines_AAA_freestanding.png" alt="غسالات"></div>
+                    <div class="service-body"><h3>غسالات</h3><p>صيانة غسالات التوب لودر والفرونت لودر وإصلاح الأعطال</p></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/8_Kitchen_appliances_for_small_spaces.png" alt="بوتاجازات"></div>
+                    <div class="service-body"><h3>بوتاجازات</h3><p>صيانة وإصلاح البوتاجازات وتغيير الشعلات والأفران</p></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/9_An_Immaculate_OLED_Expression_Toshiba.png" alt="شاشات وتلفزيونات"></div>
+                    <div class="service-body"><h3>شاشات وتلفزيونات</h3><p>إصلاح شاشات LCD و OLED وجميع أنواع التلفزيونات</p></div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img-wrap"><img class="service-img" src="images/5_Ariston_Pro_R_Evo_Horizontal_80_Liter.png" alt="سخانات"></div>
+                    <div class="service-body"><h3>سخانات</h3><p>صيانة وإصلاح السخانات الكهربائية والغاز وسخانات الشمس</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <div class="about-text">
+                <h2>من نحن<br><span>axperts</span></h2>
+                <p>
+                    نحن شركة axperts، رائدون في مجال صيانة الأجهزة المنزلية في مصر منذ عام 2009.
+                    بدأنا رحلتنا بفريق صغير من الفنيين المتخصصين، وتحولنا إلى شركة متكاملة تغطي
+                    جميع أنواع الأجهزة المنزلية من جميع الماركات العالمية والمحلية.
+                </p>
+                <p>
+                    فريقنا يضم أكثر من 50 فني معتمد، مُدرَّبون على أعلى مستوى، يعملون على مدار الساعة
+                    لتقديم أسرع وأفضل خدمة صيانة في أسرع وقت ممكن وبأفضل الأسعار.
+                </p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                        <h4>خبرة +15 سنة</h4>
+                        <p>أكثر من خمس عشرة سنة من الخبرة في مجال الصيانة</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <h4>فنيين معتمدين</h4>
+                        <p>فريق مدرب ومعتمد من أفضل الجهات</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+                        <h4>قطع غيار أصلية</h4>
+                        <p>نستخدم فقط قطع الغيار الأصلية المعتمدة</p>
+                    </div>
+                    <div class="about-feature">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+                        <h4>ضمان الإصلاح</h4>
+                        <p>ضمان على جميع الإصلاحات لمدة سنة كاملة</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="images/8_Kitchen_appliances_for_small_spaces.png" alt="axperts - صيانة الأجهزة المنزلية">
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="testimonials-inner">
+            <h2 class="section-title">ماذا يقول عملاؤنا</h2>
+            <p class="section-subtitle">آلاف العملاء الراضين يثقون في خدماتنا</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">خدمة ممتازة جداً، الفني وصل في نفس اليوم وصلح التكييف في وقت قصير. السعر معقول ومفيش مفاجآت. بنصح بيهم بجد.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">أ</div>
+                        <div>
+                            <div class="author-name">أحمد محمد</div>
+                            <div class="author-location">مدينة نصر، القاهرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">الغسالة بتاعتي اتعطلت وكنت خايفة تكون محتاجة قطع غيار غالية، بس الحمد لله axperts صلحوها بسعر كويس وشغالة تمام من يومها.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div>
+                            <div class="author-name">سارة علي</div>
+                            <div class="author-location">المعادي، القاهرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">تعاملت معاهم في صيانة الثلاجة والبوتاجاز. فنيين محترفين ومؤدبين ونظيفين في شغلهم. هيكونوا دايماً أول اختياري.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div>
+                            <div class="author-name">محمد حسن</div>
+                            <div class="author-location">الزمالك، القاهرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">تواصلت بالواتساب الساعة 10 بالليل، وأول الصبح كان الفني عندي. استغربت من السرعة دي. شركة محترمة بجد.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ن</div>
+                        <div>
+                            <div class="author-name">نورهان إبراهيم</div>
+                            <div class="author-location">مصر الجديدة، القاهرة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">عندي شاشة سوني تعبت وكل حد قالي روح اشتري جديدة، لكن axperts صلحوها بربع تمن الشاشة الجديدة. ممنونين جداً.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ع</div>
+                        <div>
+                            <div class="author-name">عمر خالد</div>
+                            <div class="author-location">6 أكتوبر، الجيزة</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">ضمان سنة على الإصلاح ده اللي خلاني أثق فيهم. وفعلاً لما حصلت مشكلة تانية في نفس الجهاز جوه السنة، جوا وصلحوها مجاناً.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ف</div>
+                        <div>
+                            <div class="author-name">فاطمة يوسف</div>
+                            <div class="author-location">الهرم، الجيزة</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" id="contact">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>عن axperts</h4>
+                <p>شركة رائدة في مجال صيانة الأجهزة المنزلية في مصر منذ عام 2009. فريق من الفنيين المعتمدين في خدمتك على مدار الساعة.</p>
+            </div>
+            <div class="footer-col">
+                <h4>روابط سريعة</h4>
+                <a href="index.html">الرئيسية</a>
+                <a href="brands.html">الماركات</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#about">من نحن</a>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <a href="tel:01280004106">📞 01280004106</a>
+                <a href="https://wa.me/201280004106">💬 واتساب</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 axperts - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+</body>
+</html>

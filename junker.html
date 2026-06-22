@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صيانة جونكر | axperts - صيانة الأجهزة المنزلية</title>
+    <meta name="description" content="خدمة صيانة جونكر بعد انتهاء الضمان. فنيين معتمدين، قطع غيار أصلية، ضمان على الإصلاح. اتصل بنا الآن 01280004106">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Cairo', 'Tajawal', sans-serif; background: #f8f9fa; color: #333; line-height: 1.8; }
+
+        .header { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .header-container { max-width: 1400px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; gap: 10px; color: white; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .logo-text { font-size: 24px; font-weight: 800; }
+        .logo-sub { font-size: 12px; color: #a0aec0; margin-top: -5px; }
+        .nav { display: flex; gap: 30px; align-items: center; }
+        .nav a { color: white; text-decoration: none; font-weight: 600; font-size: 15px; transition: all 0.3s; padding: 8px 16px; border-radius: 8px; }
+        .nav a:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+        .nav a.active { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .header-contact { display: flex; align-items: center; gap: 15px; }
+        .phone-btn { background: linear-gradient(135deg, #f093fb, #f5576c); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; display: flex; align-items: center; gap: 8px; transition: all 0.3s; }
+        .phone-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(240, 147, 251, 0.4); }
+        .book-btn { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: 700; transition: all 0.3s; }
+        .book-btn:hover { transform: scale(1.05); box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); }
+
+        .hero { min-height: 100vh; background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(15, 52, 96, 0.9)), url('images/8_Kitchen_appliances_for_small_spaces.png'); background-size: cover; background-position: center; background-attachment: fixed; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; padding-top: 100px; }
+        .hero-content { text-align: center; color: white; z-index: 2; max-width: 900px; padding: 40px; }
+        .brand-badge { display: inline-block; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); padding: 10px 30px; border-radius: 50px; font-size: 14px; font-weight: 600; margin-bottom: 30px; border: 1px solid rgba(255,255,255,0.3); }
+        .hero h1 { font-size: 64px; font-weight: 900; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); line-height: 1.2; }
+        .hero h1 span { color: #ffd700; display: block; }
+        .hero-desc { font-size: 20px; margin-bottom: 40px; opacity: 0.95; line-height: 2; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px; backdrop-filter: blur(5px); }
+        .hero-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .hero-btn { padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.3s; display: flex; align-items: center; gap: 10px; }
+        .hero-btn-primary { background: white; color: #333; }
+        .hero-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .hero-btn-whatsapp { background: #25d366; color: white; }
+        .hero-btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); }
+        .hero-btn-call { background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); color: white; border: 2px solid rgba(255,255,255,0.5); }
+        .hero-btn-call:hover { background: rgba(255,255,255,0.3); transform: translateY(-3px); }
+
+        .stats { display: flex; justify-content: center; gap: 30px; margin-top: 50px; flex-wrap: wrap; }
+        .stat-item { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 25px 40px; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.2); min-width: 150px; transition: all 0.3s; }
+        .stat-item:hover { transform: translateY(-5px); background: rgba(255,255,255,0.25); }
+        .stat-number { font-size: 32px; font-weight: 900; color: #ffd700; }
+        .stat-label { font-size: 14px; opacity: 0.9; margin-top: 5px; }
+
+        .section { padding: 80px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-size: 42px; font-weight: 900; text-align: center; margin-bottom: 20px; color: #1a1a2e; }
+        .section-subtitle { text-align: center; font-size: 18px; color: #666; margin-bottom: 60px; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-image { height: 450px; border-radius: 30px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.2); position: relative; }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .about-image:hover img { transform: scale(1.05); }
+        .about-image-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
+        .about-image-overlay h3 { font-size: 24px; font-weight: 800; }
+        .about-content h3 { font-size: 32px; font-weight: 800; color: #1a1a2e; margin-bottom: 20px; line-height: 1.4; }
+        .about-content p { font-size: 17px; color: #555; line-height: 2; margin-bottom: 20px; }
+
+        .services-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: white; padding: 80px 20px; position: relative; overflow: hidden; }
+        .services-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('images/8_Kitchen_appliances_for_small_spaces.png'); background-size: cover; background-position: center; opacity: 0.05; filter: blur(10px); }
+        .services-section .section-title { color: white; position: relative; z-index: 2; }
+        .services-section .section-subtitle { color: #a0aec0; position: relative; z-index: 2; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+        .service-card { background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 30px; transition: all 0.3s; }
+        .service-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .service-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 15px; color: #ffd700; }
+        .service-card p { color: #a0aec0; line-height: 1.8; }
+        .service-icon-large { width: 64px; height: 64px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; } .service-icon-large svg { width: 32px; height: 32px; }
+
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; }
+        .feature-card { background: white; border-radius: 20px; padding: 35px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; border: 2px solid transparent; }
+        .feature-card:hover { transform: translateY(-5px); border-color: #667eea; box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2); }
+        .feature-icon-large { width: 64px; height: 64px; background: linear-gradient(135deg, #4f8ef7, #5b6ef5); border-radius: 16px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; } .feature-icon-large svg { width: 30px; height: 30px; fill: none; stroke: white; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .feature-card h4 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: #1a1a2e; }
+        .feature-card p { color: #666; line-height: 1.8; }
+
+        .why-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); padding: 80px 20px; position: relative; }
+        .why-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('images/8_Kitchen_appliances_for_small_spaces.png'); background-size: cover; background-position: center; opacity: 0.03; filter: blur(20px); }
+        .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
+        .why-card { background: white; border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); transition: all 0.3s; position: relative; overflow: hidden; }
+        .why-card::before { content: ''; position: absolute; top: 0; left: 0; width: 5px; height: 100%; background: linear-gradient(135deg, #667eea, #764ba2); }
+        .why-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .why-card h4 { font-size: 22px; font-weight: 700; margin-bottom: 15px; color: #1a1a2e; }
+        .why-card p { color: #666; line-height: 1.8; font-size: 15px; }
+        .why-number { font-size: 48px; font-weight: 900; color: rgba(102, 126, 234, 0.1); position: absolute; top: 20px; left: 20px; }
+
+        .process-section { padding: 80px 20px; max-width: 1400px; margin: 0 auto; position: relative; }
+        .process-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('images/8_Kitchen_appliances_for_small_spaces.png'); background-size: cover; background-position: center; opacity: 0.02; filter: blur(30px); }
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; position: relative; z-index: 2; }
+        .process-step { text-align: center; position: relative; }
+        .process-step::after { content: '→'; position: absolute; top: 40px; left: -20px; font-size: 30px; color: #667eea; opacity: 0.5; }
+        .process-step:first-child::after { display: none; }
+        .step-number { width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px; font-weight: 900; color: white; box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3); }
+        .process-step h4 { font-size: 20px; font-weight: 700; margin-bottom: 10px; }
+        .process-step p { color: #666; font-size: 15px; }
+
+        .cta-section { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 100px 20px; text-align: center; color: white; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%); animation: pulse 4s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        .cta-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .cta-section h2 { font-size: 48px; font-weight: 900; margin-bottom: 20px; }
+        .cta-section p { font-size: 20px; margin-bottom: 40px; opacity: 0.9; }
+        .cta-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .cta-btn { padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 18px; transition: all 0.3s; }
+        .cta-btn:hover { transform: scale(1.05); }
+
+        .gallery-section { padding: 80px 20px; background: white; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1400px; margin: 0 auto; }
+        .gallery-item { border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.3s; position: relative; }
+        .gallery-item:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        .gallery-item img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; }
+        .gallery-overlay h4 { font-size: 18px; font-weight: 700; }
+
+        .footer { background: #0a0a1a; color: white; padding: 60px 20px 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto 40px; }
+        .footer-col h4 { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: #ffd700; }
+        .footer-col a { color: #a0aec0; text-decoration: none; display: block; margin-bottom: 10px; transition: all 0.3s; }
+        .footer-col a:hover { color: white; padding-right: 5px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: #a0aec0; }
+
+        .floating-whatsapp { position: fixed; bottom: 30px; left: 30px; width: 60px; height: 60px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; text-decoration: none; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); z-index: 999; transition: all 0.3s; }
+        .floating-whatsapp:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6); }
+        .floating-phone { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; text-decoration: none; box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4); z-index: 999; transition: all 0.3s; }
+        .floating-phone:hover { transform: scale(1.1); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6); }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 36px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav { display: none; }
+            .stats { flex-direction: column; align-items: center; }
+            .hero-buttons { flex-direction: column; }
+            .process-step::after { display: none; }
+            .cta-section h2 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></div>
+                <div><div class="logo-text">axperts</div><div class="logo-sub">صيانة الأجهزة المنزلية</div></div>
+            </a>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="brands.html" class="active">الماركات</a>
+                <a href="services.html">خدماتنا</a>
+                <a href="about.html">من نحن</a>
+                <a href="contact.html">تواصل معنا</a>
+            </nav>
+            <div class="header-contact">
+                <a href="tel:01280004106" class="phone-btn">📞 01280004106</a>
+                <a href="#book" class="book-btn">احجز الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="brand-badge">✓ خدمة معتمدة من الشركة المصنعة</div>
+            <h1>صيانة جونكر<span>بأعلى جودة وأقل سعر</span></h1>
+            <p class="hero-desc">جونكر هي علامة تجارية ألمانية متخصصة في البوتاجازات والأفران، تأسست عام 1960. تتميز منتجات جونكر بالدقة الألمانية والتصميم العملي.<br><br>نحن في axperts نقدم خدمة صيانة متكاملة لجميع أجهزة جونكر بعد انتهاء فترة الضمان. فريقنا من الفنيين المعتمدين مدرب على أحدث التقنيات ومجهز بأدوات الصيانة المتطورة لضمان إصلاح سريع وفعال لجميع مشاكل أجهزتك المنزلية.</p>
+            <div class="hero-buttons">
+                <a href="tel:01280004106" class="hero-btn hero-btn-call">📞 اتصل بنا الآن</a>
+                <a href="https://wa.me/201280004106" class="hero-btn hero-btn-whatsapp">💬 واتساب</a>
+                <a href="#services" class="hero-btn hero-btn-primary">← استعرض خدماتنا</a>
+            </div>
+            <div class="stats">
+                <div class="stat-item"><div class="stat-number">+15</div><div class="stat-label">سنة خبرة</div></div>
+                <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">خدمة طوارئ</div></div>
+                <div class="stat-item"><div class="stat-number">+10,000</div><div class="stat-label">عميل راضٍ</div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">لماذا تختار axperts لصيانة جونكر؟</h2>
+        <p class="section-subtitle">نحن الخيار الأمثل لصيانة أجهزتك المنزلية من ماركة جونكر</p>
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="images/8_Kitchen_appliances_for_small_spaces.png" alt="جونكر appliances">
+                <div class="about-image-overlay"><h3>جونكر</h3><p>أجهزة منزلية عالمية الجودة</p></div>
+            </div>
+            <div class="about-content">
+                <h3>خبرة +15 عاماً في صيانة جونكر</h3>
+                <p>تأسست شركة axperts عام 2009، ومنذ ذلك الحين نقدم خدمات صيانة متميزة لجميع أجهزة جونكر في جميع أنحاء مصر. نمتلك فريقاً من الفنيين المتخصصين الذين تم تدريبهم على أيدي خبراء من الشركة المصنعة، مما يضمن لك الحصول على خدمة صيانة بمعايير عالمية.</p>
+                <p>نستخدم فقط قطع الغيار الأصلية من جونكر، مع ضمان سنة كاملة على جميع الإصلاحات. كما نقدم خدمة طوارئ على مدار 24 ساعة طوال أيام الأسبوع، لأننا نعلم أن عطل الجهاز المنزلي يمكن أن يحدث في أي وقت.</p>
+                <p>سواء كنت بحاجة إلى صيانة دورية أو إصلاح عطل مفاجئ، فريقنا جاهز لمساعدتك. نصل إلى منزلك في أسرع وقت ممكن، ونقوم بتشخيص المشكلة وإصلاحها في نفس الزيارة في معظم الحالات.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <h2 class="section-title">أجهزة جونكر</h2>
+        <p class="section-subtitle">نصلح جميع أنواع أجهزة جونكر المنزلية</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="images/3_Fresh_FNT_D470YB_4K_Digital_Refrigerator.png" alt="ثلاجة جونكر"><div class="gallery-overlay"><h4>ثلاجات جونكر</h4></div></div>
+            <div class="gallery-item"><img src="images/2_Zanussi_Front_Load_Washer_220_240V.png" alt="غسالة جونكر"><div class="gallery-overlay"><h4>غسالات جونكر</h4></div></div>
+            <div class="gallery-item"><img src="images/1_Unionaire_Artify_Split_Air_Conditioner.png" alt="مكيف جونكر"><div class="gallery-overlay"><h4>مكيفات جونكر</h4></div></div>
+            <div class="gallery-item"><img src="images/8_Kitchen_appliances_for_small_spaces.png" alt="بوتاجاز جونكر"><div class="gallery-overlay"><h4>بوتاجازات جونكر</h4></div></div>
+            <div class="gallery-item"><img src="images/5_Ariston_Pro_R_Evo_Horizontal_80_Liter.png" alt="سخان جونكر"><div class="gallery-overlay"><h4>سخانات جونكر</h4></div></div>
+            <div class="gallery-item"><img src="images/microwave_kenwood.png" alt="ميكروويف جونكر"><div class="gallery-overlay"><h4>ميكروويف جونكر</h4></div></div>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2 class="section-title">خدمات صيانة جونكر</h2>
+        <p class="section-subtitle">نقدم مجموعة شاملة من خدمات الصيانة لجميع أجهزة جونكر</p>
+        <div class="services-grid">
+            <div class="service-card"><div class="service-icon-large"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>صيانة بوتاجازات جونكر</h4><p>نقدم خدمة صيانة متكاملة لـبوتاجازات جونكر بأعلى معايير الجودة. فريقنا من الفنيين المعتمدين مدرب على أحدث التقنيات ويستخدم قطع الغيار الأصلية لضمان أفضل أداء لجهازك.</p></div><div class="service-card"><div class="service-icon-large"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>صيانة أفران جونكر</h4><p>نقدم خدمة صيانة متكاملة لـأفران جونكر بأعلى معايير الجودة. فريقنا من الفنيين المعتمدين مدرب على أحدث التقنيات ويستخدم قطع الغيار الأصلية لضمان أفضل أداء لجهازك.</p></div><div class="service-card"><div class="service-icon-large"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>صيانة شفاطات جونكر</h4><p>نقدم خدمة صيانة متكاملة لـشفاطات جونكر بأعلى معايير الجودة. فريقنا من الفنيين المعتمدين مدرب على أحدث التقنيات ويستخدم قطع الغيار الأصلية لضمان أفضل أداء لجهازك.</p></div><div class="service-card"><div class="service-icon-large"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div><h4>صيانة سخانات جونكر</h4><p>نقدم خدمة صيانة متكاملة لـسخانات جونكر بأعلى معايير الجودة. فريقنا من الفنيين المعتمدين مدرب على أحدث التقنيات ويستخدم قطع الغيار الأصلية لضمان أفضل أداء لجهازك.</p></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">مميزات خدمتنا</h2>
+        <p class="section-subtitle">نفتخر بتقديم أفضل خدمة صيانة في مصر</p>
+        <div class="features-grid">
+            <div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4>فنيين متخصصين في البوتاجازات</h4><p>نضمن لك فنيين متخصصين في البوتاجازات في كل زيارة صيانة. نحن نؤمن بأن الجودة هي الأساس، ولذلك نستخدم فقط قطع الغيار الأصلية ونطبق أعلى معايير الصيانة العالمية.</p></div><div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4>قطع غيار أصلية ألمانية</h4><p>نضمن لك قطع غيار أصلية ألمانية في كل زيارة صيانة. نحن نؤمن بأن الجودة هي الأساس، ولذلك نستخدم فقط قطع الغيار الأصلية ونطبق أعلى معايير الصيانة العالمية.</p></div><div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4>ضمان سنة على الإصلاح</h4><p>نضمن لك ضمان سنة على الإصلاح في كل زيارة صيانة. نحن نؤمن بأن الجودة هي الأساس، ولذلك نستخدم فقط قطع الغيار الأصلية ونطبق أعلى معايير الصيانة العالمية.</p></div><div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4>خدمة سريعة خلال 24 ساعة</h4><p>نضمن لك خدمة سريعة خلال 24 ساعة في كل زيارة صيانة. نحن نؤمن بأن الجودة هي الأساس، ولذلك نستخدم فقط قطع الغيار الأصلية ونطبق أعلى معايير الصيانة العالمية.</p></div><div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div><h4>خبرة في الموديلات الألمانية</h4><p>نضمن لك خبرة في الموديلات الألمانية في كل زيارة صيانة. نحن نؤمن بأن الجودة هي الأساس، ولذلك نستخدم فقط قطع الغيار الأصلية ونطبق أعلى معايير الصيانة العالمية.</p></div>
+            <div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h4>سرعة في الاستجابة</h4><p>نصل إلى منزلك في غضون ساعتين من اتصالك في معظم المناطق. نعلم أن وقتك ثمين، ولذلك نعمل بكفاءة عالية لإصلاح جهازك في أسرع وقت ممكن.</p></div>
+            <div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>أسعار شفافة</h4><p>نقدم أسعاراً تنافسية وشفافة بدون أي رسوم خفية. تحصل على تقدير مجاني للتكلفة قبل بدء أي عمل، مع ضمان أفضل سعر في السوق.</p></div>
+            <div class="feature-card"><div class="feature-icon-large"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>ضمان شامل</h4><p>نقدم ضماناً سنة كاملة على جميع الإصلاحات وقطع الغيار المستبدلة. إذا عاد العطل خلال فترة الضمان، نقوم بالإصلاح مجاناً تماماً.</p></div>
+        </div>
+    </section>
+
+    <section class="why-section">
+        <h2 class="section-title">لماذا axperts؟</h2>
+        <p class="section-subtitle">اكتشف لماذا يختار آلاف العملاء axperts كل عام</p>
+        <div class="why-grid">
+            <div class="why-card"><div class="why-number">01</div><h4>فنيين معتمدين</h4><p>جميع فنيينا معتمدين من الشركات المصنعة ومدربون على أحدث التقنيات. نختار فريقنا بعناية فائقة ونقدم لهم تدريباً مستمراً لضمان أعلى مستوى من الخدمة.</p></div>
+            <div class="why-card"><div class="why-number">02</div><h4>قطع غيار أصلية</h4><p>نستخدم فقط قطع الغيار الأصلية من جونكر مع ضمان سنة كاملة. لا نستخدم قطع غيار مقلدة أو مستعملة، لأننا نعلم أن الجودة تبدأ من القطع الصغيرة.</p></div>
+            <div class="why-card"><div class="why-number">03</div><h4>خدمة 24/7</h4><p>فريقنا متاح على مدار 24 ساعة طوال أيام الأسبوع، حتى في العطلات الرسمية. نعلم أن الأعطال لا تنتظر موعداً مناسباً، ولذلك نحن جاهزون دائماً.</p></div>
+            <div class="why-card"><div class="why-number">04</div><h4>ضمان على الإصلاح</h4><p>نقدم ضماناً سنة كاملة على جميع الإصلاحات. إذا عاد العطل خلال فترة الضمان، نقوم بالإصلاح مجاناً. ثقتك بنا هي أهم ما نملك.</p></div>
+            <div class="why-card"><div class="why-number">05</div><h4>أسعار تنافسية</h4><p>نقدم أفضل الأسعار في السوق مع الحفاظ على أعلى معايير الجودة. نقدم تقديراً مجانياً قبل بدء أي عمل، ولا يوجد أي رسوم خفية.</p></div>
+            <div class="why-card"><div class="why-number">06</div><h4>سرعة في الوصول</h4><p>نصل إلى منزلك في غضون ساعتين من اتصالك في معظم المناطق. نغطي جميع محافظات مصر مع شبكة واسعة من الفنيين المتخصصين.</p></div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <h2 class="section-title">كيف نعمل؟</h2>
+        <p class="section-subtitle">خطوات بسيطة للحصول على خدمة صيانة متميزة</p>
+        <div class="process-grid">
+            <div class="process-step"><div class="step-number">1</div><h4>اتصل بنا</h4><p>اتصل بنا على 01280004106 أو ارسل لنا على واتساب. فريق خدمة العملاء جاهز لمساعدتك على مدار 24 ساعة.</p></div>
+            <div class="process-step"><div class="step-number">2</div><h4>تحديد الموعد</h4><p>نحدد معك موعداً مناسباً لزيارة الفني. نعمل على مدار الأسبوع بما في ذلك أيام الجمعة والعطلات الرسمية.</p></div>
+            <div class="process-step"><div class="step-number">3</div><h4>التشخيص</h4><p>يقوم الفني المتخصص بتشخيص المشكلة بدقة ويقدم لك تقديراً شفافاً للتكلفة قبل بدء أي عمل.</p></div>
+            <div class="process-step"><div class="step-number">4</div><h4>الإصلاح</h4><p>يقوم الفني بإصلاح الجهاز باستخدام قطع الغيار الأصلية وفي معظم الحالات يتم الإصلاح في نفس الزيارة.</p></div>
+            <div class="process-step"><div class="step-number">5</div><h4>الضمان</h4><p>نقدم لك ضماناً سنة كاملة على الإصلاح. إذا عاد العطل خلال فترة الضمان، نقوم بالإصلاح مجاناً.</p></div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="book">
+        <div class="cta-content">
+            <h2>احجز صيانة جونكر الآن!</h2>
+            <p>لا تنتظر حتى يزداد العطل سوءاً. اتصل بنا الآن واحصل على خدمة صيانة متميزة بأفضل سعر في مصر. فريقنا جاهز لمساعدتك على مدار 24 ساعة.</p>
+            <div class="cta-buttons">
+                <a href="tel:01280004106" class="cta-btn hero-btn-primary" style="color: #333;">📞 اتصل بنا: 01280004106</a>
+                <a href="https://wa.me/201280004106" class="cta-btn hero-btn-whatsapp">💬 واتساب</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>عن axperts</h4><p style="color: #a0aec0; line-height: 1.8;">نحن شركة رائدة في مجال صيانة الأجهزة المنزلية في مصر منذ عام 2009. نقدم خدمات صيانة متميزة لجميع الماركات العالمية.</p></div>
+            <div class="footer-col"><h4>خدماتنا</h4><a href="#">صيانة الثلاجات</a><a href="#">صيانة الغسالات</a><a href="#">صيانة المكيفات</a><a href="#">صيانة البوتاجازات</a><a href="#">صيانة السخانات</a></div>
+            <div class="footer-col"><h4>الماركات</h4><a href="samsung.html">سامسونج</a><a href="lg.html">إل جي</a><a href="bosch.html">بوش</a><a href="whirlpool.html">وايرلبول</a><a href="brands.html">جميع الماركات</a></div>
+            <div class="footer-col"><h4>تواصل معنا</h4><a href="tel:01280004106">📞 01280004106</a><a href="https://wa.me/201280004106">💬 واتساب</a><a href="mailto:info@axperts.com">📧 info@axperts.com</a><p style="color: #a0aec0; margin-top: 15px;">خدمة 24 ساعة طوال أيام الأسبوع</p></div>
+        </div>
+        <div class="footer-bottom"><p>© 2024 axperts - جميع الحقوق محفوظة | صيانة الأجهزة المنزلية</p></div>
+    </footer>
+
+    <a href="https://wa.me/201280004106" class="floating-whatsapp">💬</a>
+    <a href="tel:01280004106" class="floating-phone">📞</a>
+</body>
+</html>
